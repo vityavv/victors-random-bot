@@ -1,0 +1,1 @@
+discordbot: node app.js
