@@ -24,9 +24,12 @@ var iogames = [
 	"elude", "piaf"
 ];
 var commandset = [
+	"HELP MENU",
+	"===============================================",
+	"*help: this help screen",
 	"*fuck: fucks up any text you send it",
 	"*iogame: gives you a random io game out of 150",
-	"*help: this help screen"];
+];
 function parseMessage(message) {
 	//Dad bot:
 	if (message.content.substring(0, 3).toLowerCase() == "im ") {
