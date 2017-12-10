@@ -52,6 +52,6 @@ function parseMessage(message) {
 		message.channel.send("http://" + iogames[Math.floor(Math.random()*iogames.length)] + ".io");
 	}
 	if (message.content.substring(0, 5).toLowerCase() == "*help") {
-		message.channel.send(commandset);
+		message.channel.send(commandset.join("\n"));
 	}
 }
