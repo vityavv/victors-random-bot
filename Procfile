@@ -1,1 +1,1 @@
-web: npm start
+discordbot: npm start
