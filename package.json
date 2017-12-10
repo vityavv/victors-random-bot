@@ -1,0 +1,23 @@
+{
+  "name": "victors-random-bot",
+  "version": "1.0.0",
+  "description": "A random discord bot with a bunch of features",
+  "main": "app.js",
+  "dependencies": {
+    "discord.js": "^11.2.1"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vityavv/victors-random-bot.git"
+  },
+  "author": "Victor Veytsman",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/vityavv/victors-random-bot/issues"
+  },
+  "homepage": "https://github.com/vityavv/victors-random-bot#readme"
+}
