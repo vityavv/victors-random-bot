@@ -23,7 +23,10 @@ var iogames = [
 	"bomber7", "mygun", "supersnake", "bombarena", "celestia", "c4arena", "slam", "arraw", "elementar",
 	"elude", "piaf"
 ];
-
+var commandset = [
+	"*help: this help screen",
+	"*fuck: fucks up any text you send it",
+	"*iogame: gives you a random io game out of 150"];
 function parseMessage(message) {
 	//Dad bot:
 	if (message.content.substring(0, 3).toLowerCase() == "im ") {
@@ -33,7 +36,7 @@ function parseMessage(message) {
 		message.channel.send("Hi, " + message.content.substring(4) + ", I'm Dad!");
 	}
 	//Fuckitup-bot
-	if (message.content.substring(0, 6).toLowerCase() == "!fuck ") {
+	if (message.content.substring(0, 6).toLowerCase() == "*fuck ") {
 		var text = message.content.substring(5);
 		text = text.split("");
 		for (var i = 0; i < text.length; i++) {
@@ -45,7 +48,10 @@ function parseMessage(message) {
 		}
 		message.channel.send(text.join(""));
 	}
-	if (message.content.substring(0, 7).toLowerCase() == "!iogame") {
+	if (message.content.substring(0, 7).toLowerCase() == "*iogame") {
 		message.channel.send("http://" + iogames[Math.floor(Math.random()*iogames.length)] + ".io");
+	}
+	if (message.content.substring(0, 5).toLowerCase() == "*help") {
+		message.channel.send(commandset);
 	}
 }
