@@ -103,8 +103,8 @@ function parseMessage(message) {
 	if (message.content.substring(0, 6).toLowerCase() == "~fonts") {
 		var fontmessage1 = fonts;
 		var fontmessage2 = fontmessage1.splice(0, Math.floor(fontmessage1.length/2));
-		fontmessage1 = fontmessage1.join(" || ");
-		fontmessage2 = fontmessage2.join(" || ");
+		fontmessage1 = fontmessage1.join("`||`");
+		fontmessage2 = fontmessage2.join("`||`");
 		message.channel.send(fontmessage2);
 		message.channel.send(fontmessage1);
 	}
