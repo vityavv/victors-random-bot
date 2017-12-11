@@ -81,9 +81,7 @@ function parseMessage(message) {
 			fontToUse = messageContent[1];
 			if (fontToUse == "r") fontToUse = fonts[Math.floor(Math.random()*fonts.length)];
 			if (!fonts.includes(fontToUse)) fontToUse = "Standard";
-			console.log(messageContent);
 			messageContent.splice(0, 2);
-			console.log(messageContent);
 			messageContent = messageContent.join("/");
 		} else {
 			messageContent = messageContent.substring(5);
