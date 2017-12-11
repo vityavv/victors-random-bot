@@ -6,6 +6,7 @@ var figlet = require("figlet");
 client.on("message", parseMessage);
 client.login(process.env.TOKEN);
 
+var fonts = figlet.fontsSync();
 var iogames = [
 	"gartic", "warscrap", "blastarena", "brutes", "hexar", "drillz", "eggl", "bellum", "123shoot", "gauch",
 	"pixelz", "deathcar", "mope", "lordz", "brutal", "deeeep", "zombz", "glor", "doomed", "starve",
@@ -29,9 +30,10 @@ var commandset = [
 	"HELP MENU",
 	"===============================================",
 	">> ~help: this help screen",
-	">> ~fuck: fucks up any text you send it",
+	">> ~fuck: fucks up any text you send it (Usage: ~fuck blah blah",
 	">> ~iogame: gives you a random io game out of 150",
-	">> ~question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha"
+	">> ~question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
+	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/ blah blah\" where font is a figlet font or r for random"
 ];
 function parseMessage(message) {
 	//Dad bot:
@@ -72,7 +74,21 @@ function parseMessage(message) {
 		});
 	}
 	if (message.content.substring(0, 5).toLowerCase() == "~big ") {
-		figlet(message.content.substring(5), function (error, data) {
+		var fontToUse = "Standard";
+		var messageContent = message.content;
+		if (message.content.substring(0, 6).toLowerCase() == "~big /") {
+			messageContent = messageContent.split("/");
+			fontToUse = messageContent[1];
+			if (fontToUse == "r") fontToUse = fonts[Math.floor(Math.random()*fonts.length)];
+			if (!fonts.includes(fontToUse)) fontToUse = "Standard";
+			console.log(messageContent);
+			messageContent.splice(0, 2);
+			console.log(messageContent);
+			messageContent = messageContent.join("/");
+		} else {
+			messageContent = messageContent.substring(5);
+		}
+		figlet(messageContent, {font: fontToUse}, function (error, data) {
 			if (error) throw error;
 			message.channel.send("```" + data + "```");
 		});
