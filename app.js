@@ -33,7 +33,7 @@ var commandset = [
 	">> ~fuck: fucks up any text you send it (Usage: ~fuck blah blah",
 	">> ~iogame: gives you a random io game out of 150",
 	">> ~question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
-	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/ blah blah\" where font is a figlet font or r for random"
+	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random"
 ];
 function parseMessage(message) {
 	//Dad bot:
@@ -86,9 +86,17 @@ function parseMessage(message) {
 		} else {
 			messageContent = messageContent.substring(5);
 		}
-		figlet(messageContent, {font: fontToUse}, function (error, data) {
-			if (error) throw error;
-			message.channel.send("```" + data + "```");
-		});
+		if (messageContent.length < 100) {
+			figlet(messageContent, {font: fontToUse}, function (error, data) {
+				if (error) throw error;
+				if (data.length > 2000) {
+					parseMessage(message);
+				} else {
+					message.channel.send("```" + data + "```");
+				}
+			});
+		} else {
+			message.channel.send("That message is so big, not even *I* can make it bigger. And I'm the king of making things big! (Try something with less than 100 characters.)");
+		}
 	}
 }
