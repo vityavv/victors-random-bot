@@ -1,6 +1,7 @@
 var Discord = require("discord.js");
 var client = new Discord.Client();
 var http = require("http");
+var figlet = require("figlet");
 
 client.on("message", parseMessage);
 client.login(process.env.TOKEN);
@@ -68,6 +69,12 @@ function parseMessage(message) {
 			result.on("end", function() {
 				message.channel.send(body + "\n\nAnswers from Wolfram|Alpha");
 			});
+		});
+	}
+	if (message.content.substring(0, 5).toLowerCase() == "~big ") {
+		figlet(message.content.substring(5), function (error, data) {
+			if (error) throw error;
+			message.channel.send("```" + data + "```");
 		});
 	}
 }

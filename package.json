@@ -4,12 +4,13 @@
   "description": "A random discord bot with a bunch of features",
   "main": "app.js",
   "dependencies": {
-    "discord.js": "^11.2.1"
+    "discord.js": "^11.2.1",
+    "figlet": "^1.2.0"
   },
   "devDependencies": {},
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-		"start": "node app.js"
+    "start": "node app.js"
   },
   "repository": {
     "type": "git",
