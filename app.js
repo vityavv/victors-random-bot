@@ -1,5 +1,6 @@
 var Discord = require("discord.js");
 var client = new Discord.Client();
+var http = require("http");
 
 client.on("message", parseMessage);
 client.login(process.env.TOKEN);
@@ -26,9 +27,10 @@ var iogames = [
 var commandset = [
 	"HELP MENU",
 	"===============================================",
-	"*help: this help screen",
-	"*fuck: fucks up any text you send it",
-	"*iogame: gives you a random io game out of 150",
+	">> *help: this help screen",
+	">> *fuck: fucks up any text you send it",
+	">> *iogame: gives you a random io game out of 150",
+	">> *question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha"
 ];
 function parseMessage(message) {
 	//Dad bot:
@@ -56,5 +58,16 @@ function parseMessage(message) {
 	}
 	if (message.content.substring(0, 5).toLowerCase() == "*help") {
 		message.channel.send(commandset.join("\n"));
+	}
+	if (message.content.substring(0, 10).toLowerCase() == "*question ") {
+		http.get("http://api.wolframalpha.com/v1/result?i="+encodeURIComponent(message.content.substring(10))+"&appid=5VW435-9JY9W6U2P9", function(result) {
+			var body = "";
+			result.on("data", data => {
+    		body += data;
+		  });
+			result.on("end", function() {\
+				message.channel.send(body + "\n\nAnswers from Wolfram|Alpha");
+			});
+		});
 	}
 }
