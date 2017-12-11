@@ -33,7 +33,8 @@ var commandset = [
 	">> ~fuck: fucks up any text you send it (Usage: ~fuck blah blah",
 	">> ~iogame: gives you a random io game out of 150",
 	">> ~question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
-	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random"
+	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random",
+	">> ~fonts: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
 ];
 function parseMessage(message) {
 	//Dad bot:
@@ -98,5 +99,13 @@ function parseMessage(message) {
 		} else {
 			message.channel.send("That message is so big, not even *I* can make it bigger. And I'm the king of making things big! (Try something with less than 100 characters.)");
 		}
+	}
+	if (message.content.substring(0, 6).toLowerCase() == "~fonts") {
+		var fontmessage1 = fonts;
+		var fontmessage2 = fontmessage1.splice(0, Math.floor(fontmessage1.length/2));
+		fontmessage1 = fontmessage1.join(" || ");
+		fontmessage2 = fontmessage2.join(" || ");
+		message.channel.send(fontmessage2);
+		message.channel.send(fontmessage1);
 	}
 }
