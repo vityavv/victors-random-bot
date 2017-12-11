@@ -38,7 +38,7 @@ function parseMessage(message) {
 		message.channel.send("Hi, " + message.content.substring(3) + ", I'm Dad!");
 	}
 	if (message.content.substring(0, 4).toLowerCase() == "i'm ") {
-		message.channel.send("Hi, " + message.content.substring(4) + ", I'm Dad!");
+		message.channel.send("Hi, " + message.content.substring(4) + ", I'm Victor's Random Bot!");
 	}
 	//Fuckitup-bot
 	if (message.content.substring(0, 6).toLowerCase() == "*fuck ") {
