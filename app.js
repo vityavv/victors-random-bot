@@ -65,7 +65,7 @@ function parseMessage(message) {
 			result.on("data", data => {
     		body += data;
 		  });
-			result.on("end", function() {\
+			result.on("end", function() {
 				message.channel.send(body + "\n\nAnswers from Wolfram|Alpha");
 			});
 		});
