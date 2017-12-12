@@ -32,6 +32,7 @@ var commandset = [
 	">> ~help: this help screen",
 	">> ~fuck: fucks up any text you send it (Usage: ~fuck blah blah",
 	">> ~iogame: gives you a random io game out of 150",
+	">> ~allio: gives you a link to every singe io game in my database. WARNING: THERE ARE 150 OF THESE",
 	">> ~question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
 	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random",
 	">> ~fonts: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
@@ -105,5 +106,11 @@ function parseMessage(message) {
 		var fontmessage2 = fontmessage1.splice(0, Math.floor(fontmessage1.length/2));
 		message.channel.send(fontmessage2.join("`||`"));
 		message.channel.send(fontmessage1.join("`||`"));
+	}
+	if (message.content.substring(0, 6).toLowerCase() == "~allio") {
+		var iomessage1 = iogames;
+		var iomessage2 = iomessage1.splice(0, Math.floor(iomessage1.length/2));
+		message.channel.send("http://"+iomessage2.join(".io | http://")+".io");
+		message.channel.send("http://"+iomessage1.join(".io | http://")+".io");
 	}
 }
