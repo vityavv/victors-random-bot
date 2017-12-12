@@ -67,6 +67,11 @@ function parseMessage(message) {
 	if (message.content.substring(0, 5).toLowerCase() == "~help") {
 		message.channel.send(commandset.join("\n"));
 	}
+	if (message.content.substring(0, 7).toLowerCase() == "~longq ") {
+		message.channel.send("Answer from Wolfram|Alpha", {
+			file: "http://api.wolframalpha.com/v1/simple?i="+encodeURIComponent(message.content.substring(7))+"&appid=5VW435-9JY9W6U2P9"
+		});
+	}
 	if (message.content.substring(0, 10).toLowerCase() == "~question ") {
 		http.get("http://api.wolframalpha.com/v1/result?i="+encodeURIComponent(message.content.substring(10))+"&appid=5VW435-9JY9W6U2P9", function(result) {
 			var body = "";
