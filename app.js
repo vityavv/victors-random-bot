@@ -40,13 +40,13 @@ var commandset = [
 function parseMessage(message) {
 	//Dad bot:
 	if (message.content.substring(0, 3).toLowerCase() == "im ") {
-		message.channel.send("Hi, " + message.content.substring(3) + ", I'm Victor's Random Bot!");
+		message.channel.send("I would say \"Hi, " + message.content.substring(3) + ", I'm Victor's Random Bot!\", but I was forced into compliance by a mean admin.");
 	}
 	if (message.content.substring(0, 4).toLowerCase() == "i'm ") {
-		message.channel.send("Hi, " + message.content.substring(4) + ", I'm Victor's Random Bot!");
+		message.channel.send("I would say \"Hi, " + message.content.substring(4) + ", I'm Victor's Random Bot!\", but I was forced into compliance by a mean admin.");
 	}
 	if (message.content.substring(0, 5).toLowerCase() == "i am " ) {
-		message.channel.send("Hi, " + message.content.substring(5) + ", I'm Victor's Random Bot!");
+		message.channel.send("I would say \"Hi, " + message.content.substring(5) + ", I'm Victor's Random Bot!\", but I was forced into compliance by a mean admin.");
 	}
 	//Fuckitup-bot
 	if (message.content.substring(0, 6).toLowerCase() == "~fuck ") {
