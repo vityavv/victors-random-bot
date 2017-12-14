@@ -4,6 +4,17 @@ var http = require("http");
 var figlet = require("figlet");
 
 client.on("message", parseMessage);
+client.on("guildMemberAdd", function(guildMember) {
+	console.log("A guild member was added");
+	guildMember.createDM(function (dmChannel) {
+		console.log("A dm channel with that guild member was created");
+		dmChannel.send("Welcome to " + guildMember.guild + "!");
+		console.log(guildMember.guild);
+		if (guildMember.guild == "Animal Alliance") {
+			dmChannel.send("Watch out for Tyler");
+		}
+	});
+});
 client.login(process.env.TOKEN);
 
 var fonts = figlet.fontsSync();
