@@ -87,13 +87,7 @@ function parseMessage(message) {
 			var body = new Buffer.alloc(0);
 			response.on('data', (data) => {body = Buffer.concat([body, data])});
 			response.on("end", ()=>{
-				tempcount++;
-				var name = `temp${tempcount}.png`;
-				fs.writeFile(name, body, function(err) {
-					if (err) throw err;
-					message.channel.send("Answer from Wolfram|Alpha", {file: name})
-					.then(() => {fs.unlink(name, ()=>{console.log("unlinked!")})});
-				});
+				message.channel.send("Answer from Wolfram|Alpha", {file: body});
 			});
 		});
 	}
