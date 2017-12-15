@@ -2,6 +2,8 @@ var Discord = require("discord.js");
 var client = new Discord.Client();
 var http = require("http");
 var figlet = require("figlet");
+var Stream = require("stream").Transform;
+var fs = require("fs");
 
 client.on("message", parseMessage);
 client.on("guildMemberAdd", function(guildMember) {
@@ -16,7 +18,7 @@ client.on("guildMemberAdd", function(guildMember) {
 	});
 });
 client.login(process.env.TOKEN);
-
+var tempcount = 0;
 var fonts = figlet.fontsSync();
 var iogames = [
 	"gartic", "warscrap", "blastarena", "brutes", "hexar", "drillz", "eggl", "bellum", "123shoot", "gauch",
@@ -40,17 +42,18 @@ var iogames = [
 var commandset = [
 	"HELP MENU",
 	"===============================================",
-	">> ~help: this help screen",
-	">> ~fuck: fucks up any text you send it (Usage: ~fuck blah blah",
-	">> ~iogame: gives you a random io game out of 150",
-	">> ~allio: gives you a link to every singe io game in my database. WARNING: THERE ARE 150 OF THESE",
-	">> ~question: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
-	">> ~big: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random",
-	">> ~fonts: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
+	">> *~help*: this help screen",
+	">> *~fuck*: fucks up any text you send it (Usage: ~fuck blah blah",
+	">> *~iogame*: gives you a random io game out of 150",
+	">> *~allio*: gives you a link to every singe io game in my database. WARNING: THERE ARE 150 OF THESE",
+	">> *~question*: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
+	">> *~shortq* (DEPRECIATED): gives you the short response to your question instead of the image (again, courtesy of Wolfram|Alpha",
+	">> *~big*: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random",
+	">> *~fonts*: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
 ];
 function parseMessage(message) {
 	//Dad bot:
-	if (message.content.substring(0, 3).toLowerCase() == "im ") {
+	/*if (message.content.substring(0, 3).toLowerCase() == "im ") {
 		message.channel.send("I would say \"Hi, " + message.content.substring(3) + ", I'm Victor's Random Bot!\", but I was forced into compliance by a mean admin.");
 	}
 	if (message.content.substring(0, 4).toLowerCase() == "i'm ") {
@@ -58,7 +61,7 @@ function parseMessage(message) {
 	}
 	if (message.content.substring(0, 5).toLowerCase() == "i am " ) {
 		message.channel.send("I would say \"Hi, " + message.content.substring(5) + ", I'm Victor's Random Bot!\", but I was forced into compliance by a mean admin.");
-	}
+	}*/
 	//Fuckitup-bot
 	if (message.content.substring(0, 6).toLowerCase() == "~fuck ") {
 		var text = message.content.substring(5);
@@ -78,13 +81,25 @@ function parseMessage(message) {
 	if (message.content.substring(0, 5).toLowerCase() == "~help") {
 		message.channel.send(commandset.join("\n"));
 	}
-	if (message.content.substring(0, 7).toLowerCase() == "~longq ") {
-		message.channel.send("Answer from Wolfram|Alpha", {
-			file: "http://api.wolframalpha.com/v1/simple?i="+encodeURIComponent(message.content.substring(7))+"&appid=5VW435-9JY9W6U2P9"
+	if (message.content.substring(0, 10).toLowerCase() == "~question ") {
+		http.get("http://api.wolframalpha.com/v1/simple?i="+encodeURIComponent(message.content.substring(10))+"&appid=5VW435-9JY9W6U2P9", function(response, error) {
+			console.log(message.content.substring(10));
+			if (error) throw error;
+			var body = new Stream();
+			response.on('data', (data) => body.push);
+			response.on("end", ()=>{
+				tempcount++;
+				var name = `temp${tempcount}.png`;
+				fs.writeFile(name, body.read(), function(err) {
+					if (err) throw err;
+					message.channel.send("Answer from Wolfram|Alpha", {file: name})
+					.then(() => {fs.unlink(name)});
+				});
+			});
 		});
 	}
-	if (message.content.substring(0, 10).toLowerCase() == "~question ") {
-		http.get("http://api.wolframalpha.com/v1/result?i="+encodeURIComponent(message.content.substring(10))+"&appid=5VW435-9JY9W6U2P9", function(result) {
+	if (message.content.substring(0, 8).toLowerCase() == "~shortq ") {
+		http.get("http://api.wolframalpha.com/v1/result?i="+encodeURIComponent(message.content.substring(8))+"&appid=5VW435-9JY9W6U2P9", function(result) {
 			var body = "";
 			result.on("data", data => {
     		body += data;
