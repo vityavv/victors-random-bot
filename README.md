@@ -13,7 +13,7 @@ So far it can...
     \_/\_/ |_|  |_|\__\___|  \__,_|_| |_|\__, |  \__\___/_/\_\\__|   \_/\_/ |_|\__|_| |_|  \__,_| |_| |_|\__, |_|\___|\__| |_|  \___/|_| |_|\__|
                                          |___/                                                           |___/                                  
 ```
-* Answer any question using the [Wolfram|Alpha API](https://www.wolframalpha.com/) (it really sucks).
+* Answer any question using the [Wolfram|Alpha API](https://www.wolframalpha.com/) (it kinda sucks) in an image or short sentence form (`~question` or `shortq`).
 * Send you a random .io game out of 150, meticulously copied games from [iogames.space](http://iogames.space).
 * Send you all of the iogames (`~allio`) or all figlet fonts (`~fonts`)
 * A couple of other little things \*wink wink\*
