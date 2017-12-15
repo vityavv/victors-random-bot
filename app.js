@@ -83,14 +83,13 @@ function parseMessage(message) {
 	}
 	if (message.content.substring(0, 10).toLowerCase() == "~question ") {
 		http.get("http://api.wolframalpha.com/v1/simple?i="+encodeURIComponent(message.content.substring(10))+"&appid=5VW435-9JY9W6U2P9", function(response, error) {
-			console.log(message.content.substring(10));
 			if (error) throw error;
-			var body = new Stream();
-			response.on('data', (data) => body.push);
+			var body = new Buffer.alloc(0);
+			response.on('data', (data) => {body = Buffer.concat([body, data])});
 			response.on("end", ()=>{
 				tempcount++;
 				var name = `temp${tempcount}.png`;
-				fs.writeFile(name, body.read(), function(err) {
+				fs.writeFile(name, body, function(err) {
 					if (err) throw err;
 					message.channel.send("Answer from Wolfram|Alpha", {file: name})
 					.then(() => {fs.unlink(name, ()=>{console.log("unlinked!")})});
