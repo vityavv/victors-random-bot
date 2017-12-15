@@ -42,14 +42,14 @@ var iogames = [
 var commandset = [
 	"HELP MENU",
 	"===============================================",
-	">> *~help*: this help screen",
-	">> *~fuck*: fucks up any text you send it (Usage: ~fuck blah blah",
-	">> *~iogame*: gives you a random io game out of 150",
-	">> *~allio*: gives you a link to every singe io game in my database. WARNING: THERE ARE 150 OF THESE",
-	">> *~question*: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
-	">> *~shortq* (DEPRECIATED): gives you the short response to your question instead of the image (again, courtesy of Wolfram|Alpha",
-	">> *~big*: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random",
-	">> *~fonts*: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
+	">> **~help**: this help screen",
+	">> **~fuck**: fucks up any text you send it (Usage: ~fuck blah blah",
+	">> **~iogame**: gives you a random io game out of 150",
+	">> **~allio**: gives you a link to every singe io game in my database. WARNING: THERE ARE 150 OF THESE",
+	">> **~question**: gives you the response to your question (ex. 5+1, how many ounces in a liter, etc.), courtesy of Wolfram|Alpha",
+	">> **~shortq** (DEPRECIATED): gives you the short response to your question instead of the image (again, courtesy of Wolfram|Alpha",
+	">> **~big**: makes all of the text you send it big (Usage: \"~big blah blah\" OR \"~big /font/blah blah\" where font is a figlet font or r for random",
+	">> **~fonts**: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
 ];
 function parseMessage(message) {
 	//Dad bot:
