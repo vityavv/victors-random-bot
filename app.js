@@ -93,7 +93,7 @@ function parseMessage(message) {
 				fs.writeFile(name, body.read(), function(err) {
 					if (err) throw err;
 					message.channel.send("Answer from Wolfram|Alpha", {file: name})
-					.then(() => {fs.unlink(name)});
+					.then(() => {fs.unlink(name, ()=>{console.log("unlinked!")})});
 				});
 			});
 		});
