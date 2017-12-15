@@ -52,7 +52,7 @@ var commandset = [
 	">> **~fonts**: gives you all of the fonts. WARNING: THERE ARE 287 FONTS SO PUT THIS IN A SPAM CHANNEL OR SOMETHING"
 ];
 function parseMessage(message) {
-	//Dad bot:
+	//Dad bot: FUCK THE MODS FUCK THEM FUCK THEM AAAAAAAA
 	/*if (message.content.substring(0, 3).toLowerCase() == "im ") {
 		message.channel.send("I would say \"Hi, " + message.content.substring(3) + ", I'm Victor's Random Bot!\", but I was forced into compliance by a mean admin.");
 	}
