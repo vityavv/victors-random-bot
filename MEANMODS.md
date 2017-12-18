@@ -10,4 +10,4 @@ if (message.content.substring(0, 4).toLowerCase() == "i'm ") {
 }
 if (message.content.substring(0, 5).toLowerCase() == "i am " ) {
 	message.channel.send("Hi, " + message.content.substring(5) + ", I'm Victor's Random Bot!");
-}
+}```
