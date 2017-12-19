@@ -8,7 +8,7 @@ module.exports.big = function(message, substring) {
 	if (message.content.substring(0, substring+1).toLowerCase() == "~big /") {
 		messageContent = messageContent.split("/");
 		fontToUse = messageContent[1];
-		if (fontToUse == "r") fontToUse = fonts[Math.floor(Math.random()*fonts.length)];
+		if (fontToUse == "r" || fontToUse == "R") fontToUse = fonts[Math.floor(Math.random()*fonts.length)];
 		if (!fonts.includes(fontToUse)) fontToUse = "Standard";
 		messageContent.splice(0, 2);
 		messageContent = messageContent.join("/");
