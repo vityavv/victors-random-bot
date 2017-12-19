@@ -10,7 +10,7 @@ module.exports.question = function(message, substring) {
 	});
 }
 module.exports.shortq = function(message, substring) {
-	http.get("http://api.wolframalpha.com/v1/result?i="+encodeURIComponent(message.content.substring(substring))+"&appid=5VW435-9JY9W6U2P9", function(result) {
+	http.get(`http://api.wolframalpha.com/v1/result?i="${encodeURIComponent(message.content.substring(substring))}&appid=${process.env.APPID}`, function(result) {
 		var body = "";
 		result.on("data", data => {
 			body += data;
