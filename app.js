@@ -8,6 +8,7 @@ var question = require("./bot-modules/question.js").question;
 var shortq = require("./bot-modules/question.js").shortq;
 var embiggen = require("./bot-modules/big.js").big;
 var showfonts = require("./bot-modules/big.js").fonts;
+var joke = require("./bot-modules/joke.js");
 
 client.on("message", parseMessage);
 client.login(process.env.TOKEN);
@@ -48,5 +49,8 @@ function parseMessage(message) {
 	}
 	if (message.content.substring(0, 6).toLowerCase() == "~allio") {
 		allio(message);
+	}
+	if (message.content.toLowerCase().startsWith("~joke")) {
+		joke(message);
 	}
 }
