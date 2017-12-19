@@ -13,6 +13,30 @@ var joke = require("./bot-modules/joke.js");
 client.on("message", parseMessage);
 client.login(process.env.TOKEN);
 
+var embed = {
+	"title": "Victor's Random Bot Help Guide",
+	"description": "The help guide for Victor's Random Bot. Suggestions and bug fixes go to [the victors-random-bot GitHub](https://github.com/vityavv/victors-random-bot)",
+	"color": 65535,
+	"timestamp": "2017-12-19T19:39:57.550Z",
+	"footer": {
+		"text": "Made by Victor Veytsman"
+	},
+	"fields": [
+		{
+			"name": "Text commands",
+			"value": "some of these properties have certain limits..."
+		},
+		{
+			"name": "Useful commands",
+			"value": "try exceeding some of them!"
+		},
+		{
+			"name": "Fun commands",
+			"value": "an informative error should show up, and this view will remain as-is until all issues are fixed"
+		}
+	]
+};
+
 var commandset = [
 	"HELP MENU",
 	"===============================================",
@@ -33,7 +57,7 @@ function parseMessage(message) {
 		iogame(message);
 	}
 	if (message.content.substring(0, 5).toLowerCase() == "~help") {
-		message.channel.send(commandset.join("\n"));
+		message.channel.send({embed});
 	}
 	if (message.content.substring(0, 10).toLowerCase() == "~question ") {
 		question(message, 10);
