@@ -1,6 +1,6 @@
 var http = require("http");
 module.exports.question = function(message, substring) {
-	http.get("http://api.wolframalpha.com/v1/simple?i="+encodeURIComponent(message.content.substring(substring))+"&appid=5VW435-9JY9W6U2P9", function(response, error) {
+	http.get(`http://api.wolframalpha.com/v1/simple?i=${encodeURIComponent(message.content.substring(substring))}&appid=${process.env.APPID}`, function(response, error) {
 		if (error) throw error;
 		var body = new Buffer.alloc(0);
 		response.on('data', (data) => {body = Buffer.concat([body, data])});
