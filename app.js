@@ -52,29 +52,21 @@ var commandset = [
 function parseMessage(message) {
 	if (message.content.toLowerCase().startsWith("~fuck ")) {
 		fucktext(message, 6);
-	}
-	if (message.content.substring(0, 7).toLowerCase() == "~iogame") {
+	} else if (message.content.substring(0, 7).toLowerCase() == "~iogame") {
 		iogame(message);
-	}
-	if (message.content.substring(0, 5).toLowerCase() == "~help") {
+	} else if (message.content.substring(0, 5).toLowerCase() == "~help") {
 		message.channel.send({embed});
-	}
-	if (message.content.substring(0, 10).toLowerCase() == "~question ") {
+	} else if (message.content.substring(0, 10).toLowerCase() == "~question ") {
 		question(message, 10);
-	}
-	if (message.content.substring(0, 8).toLowerCase() == "~shortq ") {
+	} else if (message.content.substring(0, 8).toLowerCase() == "~shortq ") {
 		shortq(message, 8);
-	}
-	if (message.content.substring(0, 5).toLowerCase() == "~big ") {
+	} else if (message.content.substring(0, 5).toLowerCase() == "~big ") {
 		embiggen(message, 5)
-	}
-	if (message.content.substring(0, 6).toLowerCase() == "~fonts") {
+	} else if (message.content.substring(0, 6).toLowerCase() == "~fonts") {
 		showfonts(message);
-	}
-	if (message.content.substring(0, 6).toLowerCase() == "~allio") {
+	} else if (message.content.substring(0, 6).toLowerCase() == "~allio") {
 		allio(message);
-	}
-	if (message.content.toLowerCase().startsWith("~joke")) {
+	} else if (message.content.toLowerCase().startsWith("~joke")) {
 		joke(message);
 	}
 }
