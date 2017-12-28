@@ -24,6 +24,9 @@ module.exports.big = function(message, substring) {
 				message.channel.send("```" + data + "```");
 			}
 		});
+		if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+			message.delete().catch(console.error);
+		}
 	} else {
 		message.channel.send("That message is so big, not even *I* can make it bigger. And I'm the king of making things big! (Try something with less than 100 characters.)");
 	}

@@ -9,4 +9,7 @@ module.exports = function(message, substring) {
 		}
 	}
 	message.channel.send(text.join(""));
+	if (message.guild.me.hasPermission("MANAGE_MESSAGES")) {
+		message.delete().catch(console.error);
+	}
 }
