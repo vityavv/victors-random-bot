@@ -22,23 +22,24 @@ client.login(config.TOKEN);
 var embed = {
 	"title": "Victor's Random Bot Help Guide",
 	"description": "The help guide for Victor's Random Bot. Suggestions and bug fixes go to [the victors-random-bot GitHub](https://github.com/vityavv/victors-random-bot)",
-	"color": 65535,
-	"timestamp": "2017-12-19T19:39:57.550Z",
+	"color": 10014208,
 	"footer": {
 		"text": "Made by Victor Veytsman"
 	},
 	"fields": [
 		{
-			"name": "Text commands",
-			"value": "some of these properties have certain limits..."
-		},
-		{
 			"name": "Useful commands",
-			"value": "try exceeding some of them!"
+			"value": `>> **~help**: This help menu!
+>> **~question**: Ask any question imaginable and have [Wolfram|Alpha](https://www.wolframalpha.com/) answer it for you in image form! Example: \`~question what is the net worth of Bill Gates?\`
+>> **~shortq**: Ask any question imaginable and have [Wolfram|Alpha](https://www.wolframalpha.com/) answer it for you in *sentence* form! Warning: the sentences are super short so this is not suggested for non-math questions. See example above. See example above.`
 		},
 		{
 			"name": "Fun commands",
-			"value": "an informative error should show up, and this view will remain as-is until all issues are fixed"
+			"value": `>> **~fuck**: Fucks up whatever text you send it. Example: \`~fuck fuck my shit up\`
+>> **~big**: Uses figlet to make your text big! Examples: \`~big big!\`, or with a specified font: \`~big /FONT/big\`, or with a random font: \`~big /r/big\`.
+>> **~fonts**: Lists all figlet fonts (to use with **~big**). There are **287** fonts so you might want to do this in a spam channel or something. Example: \`~fonts\`
+>> **~iogame**: Gives you a random *.io* game out of 150. Example: \`~iogame\`
+>> **~allio**: Gives you a link to every single *.io* game I have. There are **150** of these so you might want to beware!`
 		}
 	]
 };
