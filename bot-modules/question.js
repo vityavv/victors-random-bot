@@ -2,7 +2,7 @@ var http = require("http");
 let config;
 try {
 	config = require("../config.json");
-} catch() {
+} catch(e) {
 	config = process.env;
 }
 

@@ -12,7 +12,7 @@ var joke = require("./bot-modules/joke.js");
 let config;
 try {
 	config = require("./config.json");
-} catch() {
+} catch(e) {
 	config = process.env;
 }
 
